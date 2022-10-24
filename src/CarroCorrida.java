@@ -100,17 +100,27 @@ public class CarroCorrida {
     }
 
     public void desligar() {
-        if (getVelocidadeAtual() == 0) {
-            ligado = false;
-            System.out.println("Desligando o carro " + getNumeroCarro() + ".");
+        if (ligado) {
+            if (getVelocidadeAtual() == 0) {
+                ligado = false;
+                System.out.println("Desligando o carro " + getNumeroCarro() + ".");
+            } else {
+                System.out.println("Carro " + getNumeroCarro() + " em movimento, é necessário parar para desliga-lo");
+            }
         } else {
-            System.out.println("Carro " + getNumeroCarro() + " em movimento, é necessário parar para desliga-lo");
+            System.out.println("Carro " + getNumeroCarro() + " já está desligado");
         }
     }
 
     public void parar() {
-        this.velocidadeAtual = 0;
-        System.out.println("Parando o carro " + getNumeroCarro() + ".");
+        if (ligado) {
+            this.velocidadeAtual = 0;
+            System.out.println("Parando o carro " + getNumeroCarro() + ".");
+
+        } else {
+            System.out.println("O carro " + getNumeroCarro() + " está desligado.");
+        }
+
     }
 
 
