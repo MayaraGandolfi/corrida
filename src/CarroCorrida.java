@@ -63,53 +63,63 @@ public class CarroCorrida {
             float novaVelocidade = velocidadeAtual + velocidadeSomar;
             if (novaVelocidade <= velocidadeMaxima) {
                 this.velocidadeAtual += velocidadeSomar;
+                System.out.println("Acelerando o carro " + getNumeroCarro() + ", velocidade atual: " + getVelocidadeAtual() + " Km/h.");
             } else {
-                System.out.println("Não é possível acelear a velocidade escolhida, pois irá ultrapassar a velocidade máxima");
+                System.out.println("Não é possível acelear mais " + velocidadeSomar + " Km/h ao carro " + getNumeroCarro() +
+                        " pois a velocidade atual é de " + getVelocidadeAtual() + " Km/h e iria ultrapassar" +
+                        " a velocidade máxima que é de " + getVelocidadeMaxima() + " Km/h.");
+                System.out.println("Velocidade do carro " + getNumeroCarro() + " continua: " + getVelocidadeAtual() + " Km/h.");
             }
         } else {
-            System.out.println("Não é possível acelerar pois carro está desligado");
+            System.out.println("Não é possível acelerar o carro " + getNumeroCarro() + " pois está desligado.");
         }
     }
 
     public void frear(float velocidadeFrear) {
         if (ligado) {
             this.velocidadeAtual -= velocidadeFrear;
-            if (velocidadeAtual < 0) {
-                this.velocidadeAtual = 0;
+            if (velocidadeAtual <= 0) {
+                System.out.println("Freando o carro" + getNumeroCarro() + ", velocidade atual: 0 Km/h.");
+                parar();
+            } else {
+                System.out.println("Freando o carro " + getNumeroCarro() + ", velocidade atual: " + getVelocidadeAtual() + " Km/h.");
             }
         } else {
-            System.out.println("Não é possível frear pois o carro está desligado.");
+            System.out.println("Não é possível frear o carro " + getNumeroCarro() + " pois está desligado.");
         }
     }
 
     public void ligar() {
         if (!ligado) {
             ligado = true;
+            System.out.println("Ligando o carro " + getNumeroCarro() + ".");
+
         } else {
-            System.out.println("Carro já está ligado");
+            System.out.println("O carro " + getNumeroCarro() + " já está ligado, não é possível liga-lo novamente");
         }
     }
 
     public void desligar() {
         if (getVelocidadeAtual() == 0) {
             ligado = false;
+            System.out.println("Desligando o carro " + getNumeroCarro() + ".");
         } else {
-            System.out.println("É necessário parar o carro para desliga-lo");
+            System.out.println("Carro " + getNumeroCarro() + " em movimento, é necessário parar para desliga-lo");
         }
     }
 
-    public void parar(){
+    public void parar() {
         this.velocidadeAtual = 0;
+        System.out.println("Parando o carro " + getNumeroCarro() + ".");
     }
 
 
     @Override
     public String toString() {
-        return "Carro de Corrida:" +
-                "\n Numero do Carro=" + numeroCarro +
-                "\n" + piloto +
-                "\n Velocidade Maxima=" + velocidadeMaxima +
-                "\n Velocidade Atual=" + velocidadeAtual +
-                "\n Ligado=" + ligado + "\n";
+        return "Carro de Corrida número: " + numeroCarro +
+                ", Velocidade Maxima: " + velocidadeMaxima +
+                ", Velocidade Atual: " + velocidadeAtual +
+                ", Ligado: " + ligado +
+                "\nComandado pelo " + piloto + "\n";
     }
 }

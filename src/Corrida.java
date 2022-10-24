@@ -46,29 +46,22 @@ public class Corrida {
         CarroCorrida carro = new CarroCorrida(44, piloto, 100);
 
         System.out.println(carro);
- 
+
         carro.ligar();
 
-        System.out.println(carro);
-        System.out.println();
         carro.acelerar(60);
         carro.acelerar(60);
-        System.out.println();
-        System.out.println(carro);
+
         carro.desligar();
         carro.frear(50);
-        System.out.println();
-        System.out.println(carro);
+
         carro.parar();
-        System.out.println();
-        System.out.println(carro);
+
         carro.ligar();
-        System.out.println();
-        System.out.println(carro);
+
         carro.desligar();
         System.out.println();
         System.out.println(carro);
-
 
 
     }
